@@ -1,38 +1,70 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const dates = ['1905','1910','1915','1920']
+// soon to be a mongo document, delivered thru a REST api
+const items = {
+      '0001': {
+            'id':1,
+            'name':'Stockholm',
+            'date': 1905
+      },
+      '0002': {
+            'id':2,
+            'name':'Moscow',
+            'date': 1911
+      },
+      '0003': {
+            'id':3,
+            'name': 'Valencia',
+            'date': '1917'
+      },
+}
 
 class Timeline extends React.Component{
    render(){
       return(
             <div>
-            <h1>Hello World!</h1>
-            <ul><FirstNode /><SingleNode /><LastNode /></ul>
+            <h1>My Timeline</h1>
             <NodeAdder />
             </div>);
 	}
 }
 
+class Item extends React.Component{
+      render(){
+            return(
+                  <li><strong>{items.name}</strong> {items.date}</li>
+            );
+      }
+}
+
 class NodeAdder extends React.Component{
-      constructor(){
-            super();
+      constructor(props){
+            super(props);
             this.state = {
-                  added: 1
-            }
+                  inputList: []
+            };
             this.addNodeEvent = this.addNodeEvent.bind(this);
       }
 
-addNodeEvent(){
-            let x = this.state.added;
-            x = x+1;
-            this.setState({added: x});
+addNodeEvent(event){
+            const inputList = this.state.inputList;
+            this.setState({
+                  inputList: inputList.concat(<Item key={items.id} name={items.name} date={items.date} />)
+            });
             
       }
 
       render(){
-            const added = this.state.added;
-      return <div><button onClick={this.addNodeEvent}>Add Node</button><br />{added}</div>
+      return <div>
+                  <button onClick={this.addNodeEvent}>Add Node</button>
+                  <br />
+                  <ul>
+                  {this.state.inputList.map(function(input, index) {
+                    return input   
+                })}
+                </ul>
+            </div>
       }
       
 }
