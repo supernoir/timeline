@@ -42,7 +42,7 @@ class NodeAdder extends React.Component{
       constructor(props){
             super(props);
             this.state = {
-                  inputList: []
+                  inputList: ["Hello"]
             };
             this.addNodeEvent = this.addNodeEvent.bind(this);
       }
@@ -66,7 +66,6 @@ addNodeEvent(event){
                 </ul>
             </div>
       }
-      
 }
 
 let SingleNode = () => {
