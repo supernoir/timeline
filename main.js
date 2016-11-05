@@ -20,6 +20,29 @@ const items = {
       },
 }
 
+let getEvents = () => {
+fetch('http://localhost:3636/events')  
+  .then(  
+    function(response) {  
+      if (response.status !== 200) {  
+        console.log('Looks like there was a problem. Status Code: ' +  
+          response.status);  
+        return;  
+      }
+
+      // Examine the text in the response  
+      response.json().then(function(data) {  
+        console.log(data);  
+      });  
+    }  
+  )  
+  .catch(function(err) {  
+    console.log('Fetch Error :-S', err);  
+  });
+}
+
+getEvents();
+
 class Timeline extends React.Component{
    render(){
       return(
@@ -42,7 +65,7 @@ class NodeAdder extends React.Component{
       constructor(props){
             super(props);
             this.state = {
-                  inputList: ["Hello"]
+                  "01": "hello"
             };
             this.addNodeEvent = this.addNodeEvent.bind(this);
       }

@@ -4,20 +4,22 @@
 const express = require('express');
 const app = express();
 const http = require('http');
-const fs = require('fs');  
 
-const events = {
-    'destination_01' : 'singapore',
-    'destination_02' : 'bangalore',
-    'destination_03' : 'mumbai',
-    'destination_04' : 'bangkok'
-}
+const cors = require("cors");
+const evts = require('./events.json');
+
+app.use(function (request, response, next) {
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    response.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");  
+  next();      
+});
 
 
 let getEvents = () => {
     app.get('/events', function(req,res){
-            res.send(events);
-            console.log(events);
+            res.send(evts);
+            console.log(evts);
     });
     console.log("GET EVENTS");
 }
@@ -30,4 +32,5 @@ let startServer = () => {
 
 
 startServer();
-getEvents();
+getEvents(evts);
+

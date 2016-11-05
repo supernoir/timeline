@@ -1,0 +1,6 @@
+{
+    "trip_01" : ["Hamburg","Copenhagen","Malmö","Stockholm"],
+    "trip_02" : ["Boston","New York","Washington","Baltimore"],
+    "trip_03" : ["Sapporo","Tokyo","Kyoto","Hiroshima"],
+    "trip_04" : ["Paris","Amsterdam","Berlin","Warsaw","Kiev","Moscow"]
+}
