@@ -1,111 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
-// soon to be a mongo document, delivered thru a REST api
-const items = {
-      '0001': {
-            'id':1,
-            'name':'Stockholm',
-            'date': 1905
-      },
-      '0002': {
-            'id':2,
-            'name':'Moscow',
-            'date': 1911
-      },
-      '0003': {
-            'id':3,
-            'name': 'Valencia',
-            'date': '1917'
-      },
-}
-
-let getEvents = () => {
-fetch('http://localhost:3636/events')  
-  .then(  
-    function(response) {  
-      if (response.status !== 200) {  
-        console.log('Looks like there was a problem. Status Code: ' +  
-          response.status);  
-        return;  
-      }
-
-      // Examine the text in the response  
-      response.json().then(function(data) {  
-        console.log(data);  
-      });  
-    }  
-  )  
-  .catch(function(err) {  
-    console.log('Fetch Error :-S', err);  
-  });
-}
-
-getEvents();
 
 class Timeline extends React.Component{
-   render(){
-      return(
-            <div>
-            <h1>My Timeline</h1>
-            <NodeAdder />
-            </div>);
-	}
-}
-
-class Item extends React.Component{
-      render(){
-            return(
-                  <li><strong>{items.name}</strong> {items.date}</li>
-            );
-      }
-}
-
-class NodeAdder extends React.Component{
       constructor(props){
             super(props);
             this.state = {
-                  "01": "hello"
-            };
-            this.addNodeEvent = this.addNodeEvent.bind(this);
+                  trips: []
+            }
       }
 
-addNodeEvent(event){
-            const inputList = this.state.inputList;
-            this.setState({
-                  inputList: inputList.concat(<Item key={items.id} name={items.name} date={items.date} />)
-            });
-            
-      }
+componentDidMount() {
 
-      render(){
-      return <div>
-                  <button onClick={this.addNodeEvent}>Add Node</button>
-                  <br />
-                  <ul>
-                  {this.state.inputList.map(function(input, index) {
-                    return input   
-                })}
-                </ul>
-            </div>
-      }
+
+    axios.get('http://localhost:3636/events')
+      .then(res => {
+        const trips = res.data;
+                console.log(res.data);
+      this.setState([ trips ]);
+      console.log(trips.trip_01.title);
+      console.log(trips.trip_01.loc);
+      });
 }
 
-let SingleNode = () => {
-            return <li>I am a single node</li>
+
+render() {
+    return (
+      <div>
+        <h1>Title: {this.state.trips.trip_01.title}</h1>
+        <ul>
+            <li key={this.state.trips}>{this.state.trips.title}</li>
+        </ul>
+      </div>
+    );
+  }
 }
 
-let FirstNode = () => {
-            return <li>I am a first node</li>
-}
 
-let LastNode = () => {
-      return <li>I am the very last node</li>
-}
-
-let AddNode = () => {
-      return <li>I am an added node!</li>
-}
 
 ReactDOM.render(<Timeline />, document.getElementById('app'))
 
