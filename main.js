@@ -4,23 +4,22 @@ import axios from 'axios';
 
 
 class Timeline extends React.Component{
-      constructor(props){
-            super(props);
+      constructor(){
+            super();
             this.state = {
-                  trips: []
-            }
+                  trip: [],
+                  ndt: [1,2,3]
+            };
       }
 
+
+
 componentDidMount() {
-
-
+  this.setState({ndt:[2,4,6]});
     axios.get('http://localhost:3636/events')
       .then(res => {
-        const trips = res.data;
-                console.log(res.data);
-      this.setState([ trips ]);
-      console.log(trips.trip_01.title);
-      console.log(trips.trip_01.loc);
+        let trip = res.data;
+      this.setState([ trip ]);
       });
 }
 
@@ -28,13 +27,14 @@ componentDidMount() {
 render() {
     return (
       <div>
-        <h1>Title: {this.state.trips.trip_01.title}</h1>
+        <h1>Title: {this.state.ndt[1]}{this.state.trip}</h1>
         <ul>
-            <li key={this.state.trips}>{this.state.trips.title}</li>
+            <li key={1}>Stuff</li>
         </ul>
       </div>
     );
   }
+
 }
 
 
