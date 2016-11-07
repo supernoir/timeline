@@ -4,8 +4,8 @@ import axios from 'axios';
 
 
 class Timeline extends React.Component{
-      constructor(){
-            super();
+      constructor(props){
+            super(props);
             this.state = {
                   trip: [],
                   ndt: [1,2,3]
@@ -18,9 +18,10 @@ componentDidMount() {
   this.setState({ndt:[2,4,6]});
     axios.get('http://localhost:3636/events')
       .then(res => {
-        let trip = res.data;
-      this.setState([ trip ]);
+        const trip = res.data.trip_03.loc;
+      this.setState({ trip });
       });
+      console.log(this.state.trip);
 }
 
 

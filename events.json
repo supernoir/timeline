@@ -1,7 +1,27 @@
 {
-    "trip_01" : {"id":1,"title":"Scandinavia","loc":["Hamburg","Copenhagen","Malmö","Stockholm"]},
-    "trip_02" : {"id":2,"title":"East Coast","loc":["Boston","New York","Washington","Baltimore"]},
-    "trip_03" : {"id":3,"title":"Japan","loc":["Sapporo","Tokyo","Kyoto","Hiroshima"]},
-    "trip_04" : {"id":4,"title":"Paris to Moscow","loc":["Paris","Amsterdam","Berlin","Warsaw","Kiev","Moscow"]},
-    "trip_05" : {"id":5,"title":"Moon","loc":["Cape Canaveral","Moon"]}
+	"trip_01": {
+		"id": 1,
+		"title": "Scandinavia",
+		"loc": ["Hamburg", "Copenhagen", "Malmö", "Stockholm"]
+	},
+	"trip_02": {
+		"id": 2,
+		"title": "East Coast",
+		"loc": ["Boston", "New York", "Washington", "Baltimore"]
+	},
+	"trip_03": {
+		"id": 3,
+		"title": "Japan",
+		"loc": ["Sapporo", "Tokyo", "Kyoto", "Hiroshima"]
+	},
+	"trip_04": {
+		"id": 4,
+		"title": "Paris to Moscow",
+		"loc": ["Paris", "Amsterdam", "Berlin", "Warsaw", "Kiev", "Moscow"]
+	},
+	"trip_05": {
+		"id": 5,
+		"title": "Moon",
+		"loc": ["Cape Canaveral", "Moon"]
+	}
 }
