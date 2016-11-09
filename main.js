@@ -8,17 +8,17 @@ class Timeline extends React.Component{
             super(props);
             this.state = {
                   trip: [],
-                  ndt: [1,2,3]
             };
       }
 
 
 
 componentDidMount() {
-  this.setState({ndt:[2,4,6]});
     axios.get('http://localhost:3636/events')
       .then(res => {
-        const trip = res.data.trip_03.loc;
+        const trip = res.data.map(s => s.title);
+        console.log(trip);
+        console.log(res.status + " " + res.statusText)
       this.setState({ trip });
       });
       console.log(this.state.trip);
@@ -28,15 +28,15 @@ componentDidMount() {
 render() {
     return (
       <div>
-        <h1>Title: {this.state.ndt[1]}{this.state.trip}</h1>
+        <h1>Title: {2*2}</h1>
         <ul>
             <li key={1}>Stuff</li>
         </ul>
       </div>
     );
   }
-
 }
+
 
 
 
