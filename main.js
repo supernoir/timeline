@@ -12,7 +12,6 @@ class Timeline extends React.Component{
       }
 
 
-
 componentDidMount() {
     axios.get('http://localhost:3636/events')
       .then(res => {
@@ -21,7 +20,7 @@ componentDidMount() {
         console.log(res.status + " " + res.statusText)
       this.setState({ trip });
       });
-      console.log(this.state.trip);
+      console.log("State is " + this.state.trip[0]);
 }
 
 
@@ -36,9 +35,6 @@ render() {
     );
   }
 }
-
-
-
 
 ReactDOM.render(<Timeline />, document.getElementById('app'))
 
