@@ -20,6 +20,7 @@ let getEvents = () => {
     app.get('/events', function(req,res){
             res.send(evts);
             console.log(evts);
+            return res.statusCode;
     });
     console.log("GET EVENTS");
 }
@@ -34,3 +35,5 @@ let startServer = () => {
 startServer();
 getEvents(evts);
 
+
+module.exports = { startServer: startServer };
