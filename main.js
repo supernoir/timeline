@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
+import Trips from './trips';
+
+
 
 class Timeline extends React.Component{
       constructor(props){
             super(props);
             this.state = {
-                  trip: [],
+                  title: [],
             };
       }
 
@@ -15,22 +18,21 @@ class Timeline extends React.Component{
 componentDidMount() {
     axios.get('http://localhost:3636/events')
       .then(res => {
-        const trip = res.data.map(s => s.title);
-        console.log(trip);
-        console.log(res.status + " " + res.statusText)
-      this.setState({ trip });
+        console.log(res.status + " " + res.statusText);
+        const title = res.data.map(t => t.title);
+        console.log(title);
+      this.setState({ title });
       });
-      console.log("State is " + this.state.trip[0]);
+      console.log("State is " + this.state.title);
 }
 
 
 render() {
     return (
       <div>
-        <h1>Title: {2*2}</h1>
-        <ul>
-            <li key={1}>Stuff</li>
-        </ul>
+      {this.state.title.map((title) => (
+            <Trips title={title} />
+            ))}
       </div>
     );
   }
