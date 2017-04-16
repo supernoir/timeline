@@ -48,9 +48,24 @@ class Timeline extends React.Component{
       return(
             <div>
             <h1>My Timeline</h1>
+            <TimeNodes />
             <NodeAdder />
-            </div>);
+      </div>);
 	}
+}
+
+class TimeNodes extends React.Component{
+      constructor(){
+            super()
+      }
+      render(){
+            return(
+                  <ul>
+                  <li>Stockholm</li>
+                  </ul>
+            )
+            
+      }
 }
 
 class Item extends React.Component{
