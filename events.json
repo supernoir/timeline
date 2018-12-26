@@ -1,6 +1,18 @@
-{
-    "trip_01" : ["Hamburg","Copenhagen","Malmö","Stockholm"],
-    "trip_02" : ["Boston","New York","Washington","Baltimore"],
-    "trip_03" : ["Sapporo","Tokyo","Kyoto","Hiroshima"],
-    "trip_04" : ["Paris","Amsterdam","Berlin","Warsaw","Kiev","Moscow"]
-}
+[
+    {
+        "id":1,
+        "destinations":["Hamburg","Copenhagen","Malmö","Stockholm"]
+    },
+    {
+        "id":2,
+        "destinations":["Boston","New York","Washington","Baltimore"]
+    },
+    {
+        "id":3,
+        "destinations":["Sapporo","Tokyo","Kyoto","Hiroshima"]
+    },
+    {
+        "id":4,
+        "destinations":["Paris","Amsterdam","Berlin","Warsaw","Kiev","Moscow"]
+    }
+]

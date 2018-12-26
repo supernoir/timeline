@@ -4,7 +4,8 @@
   "description": "",
   "main": "bundle.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start-client": "webpack-dev-server",
+    "start-server":"nodemon server.js",
     "test": "mocha"
   },
   "author": "",
